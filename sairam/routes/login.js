@@ -4,7 +4,7 @@ module.exports=(req,res)=>{
 	var email=req.body.email;
 	var password=req.body.password;
 
-	var sql="select * from user where email='"+email+"'";
+	var sql="select * from users where email='"+email+"'";
 	db.query(sql,(error,results)=>{
 		if(results.length>0)
 		{ 
@@ -14,7 +14,8 @@ module.exports=(req,res)=>{
 				if(response==true)
 					{
 					  console.log("logged in");
-					  res.send("logged in")
+					  //res.send("logged in")
+					  res.redirect("/dashboard")
 				      req.session.loggedIn=true;
 				      req.session.email=email;
 				      }
